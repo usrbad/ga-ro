@@ -7,4 +7,3 @@ class LoginPage(BasePage):
         self.element_is_visible(Locators.EMAIL).send_keys(email)
         self.element_is_visible(Locators.PASSWORD).send_keys(password)
         self.element_is_visible(Locators.LOGIN_BUTTON).click()
-        return
