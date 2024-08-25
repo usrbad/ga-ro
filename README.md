@@ -3,7 +3,12 @@
 git clone https://github.com/usrbad/ga-ro.git
 cd ga-ro
 ```
-
+#### Create .env file with variables like:
+```
+TEST_EMAIL=
+TEST_PASSWORD=
+TEST_URL=
+```
 #### If you prefer to use venv:
 ```
 python -m venv venv
@@ -28,7 +33,6 @@ source ~/.zshrc
 deactivate
 source venv/bin/activate
 ```
-
 #### Collecting tests:
 ```
 python -m pytest --co
