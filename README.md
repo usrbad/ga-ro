@@ -19,20 +19,6 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-
-#### May need to reload env (Linux):
-```
-source ~/.bash_profile
-```
-#### on Mac:
-```
-source ~/.zshrc
-```
-##### or if you use venv:
-```
-deactivate
-source venv/bin/activate
-```
 #### Collecting tests:
 ```
 python -m pytest --co
@@ -51,4 +37,19 @@ python -m pytest -k test_folder_created_smoke
 #### Run all tests:
 ```
 python -m pytest
+```
+<p></p>
+#### Not necessary actions:
+#### May need to reload env (Linux):
+```
+source ~/.bash_profile
+```
+#### on Mac:
+```
+source ~/.zshrc
+```
+##### or if you use venv:
+```
+deactivate
+source venv/bin/activate
 ```
