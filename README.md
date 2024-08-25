@@ -39,6 +39,7 @@ python -m pytest -k test_folder_created_smoke
 python -m pytest
 ```
 <p></p>
+
 #### Not necessary actions:
 #### May need to reload env (Linux):
 ```
