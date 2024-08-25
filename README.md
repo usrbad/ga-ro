@@ -1,4 +1,3 @@
-# ***To be filled***
 ### **Installation (Linux, Mac):**
 ```
 git clone https://github.com/usrbad/ga-ro.git
