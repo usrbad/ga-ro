@@ -10,7 +10,7 @@ url = os.getenv('TEST_URL')
 email = os.getenv('TEST_EMAIL')
 password = os.getenv('TEST_PASSWORD')
 
-class TestFoldersSmoke:
+class TestFoldersCreationSmoke:
     def test_folder_created_smoke(self, driver):
         # Pre-condition: Login
         data = folder_random_data(10, DT.TYPES['cyrillic'] + DT.TYPES['latin'], 15, DT.TYPES['latin'])
@@ -23,7 +23,7 @@ class TestFoldersSmoke:
         assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
         looks_page.new_folder_button()
         looks_page.fill_folder_fields(data)
-        assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+        assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
         looks_page.save_folder_button()
 
         # Delete cookies and login again for checking
@@ -47,7 +47,7 @@ class TestFoldersSmoke:
         assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
         looks_page.new_folder_button()
         looks_page.fill_folder_fields(data)
-        assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+        assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
         looks_page.save_folder_button()
 
         # Delete cookies and login again for checking
@@ -59,7 +59,7 @@ class TestFoldersSmoke:
         looks_page.delete_folder(data, driver)
         assert looks_page.if_folder_exists(data, driver), 'the folder is not deleted'
 
-class TestFoldersRegressionNameLength:
+class TestFoldersCreationRegressionNameLength:
     def test_folder_created_name_1_symbol(self, driver):
         # Pre-condition: Login
         data = folder_random_data(1, DT.TYPES['cyrillic'] + DT.TYPES['latin'], 0, DT.TYPES['latin'])
@@ -72,7 +72,7 @@ class TestFoldersRegressionNameLength:
         assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
         looks_page.new_folder_button()
         looks_page.fill_folder_fields(data)
-        assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+        assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
         looks_page.save_folder_button()
 
         # Delete cookies and login again for checking
@@ -98,7 +98,7 @@ class TestFoldersRegressionNameLength:
         assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
         looks_page.new_folder_button()
         looks_page.fill_folder_fields(data)
-        assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+        assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
         looks_page.save_folder_button()
 
         # Delete cookies and login again for checking
@@ -124,7 +124,7 @@ class TestFoldersRegressionNameLength:
             assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
             looks_page.new_folder_button()
             looks_page.fill_folder_fields(data)
-            assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
             looks_page.save_folder_button()
 
             # Delete cookies and login again for checking
@@ -150,7 +150,7 @@ class TestFoldersRegressionNameLength:
             assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
             looks_page.new_folder_button()
             looks_page.fill_folder_fields(data)
-            assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
             looks_page.save_folder_button()
 
             # Delete cookies and login again for checking
@@ -176,7 +176,7 @@ class TestFoldersRegressionNameLength:
             assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
             looks_page.new_folder_button()
             looks_page.fill_folder_fields(data)
-            assert looks_page.get_folder_name_in_form(data) == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
             looks_page.save_folder_button()
 
             # Delete cookies and login again for checking
@@ -202,9 +202,9 @@ class TestFoldersRegressionNameLength:
             assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
             looks_page.new_folder_button()
             looks_page.fill_folder_fields(data)
-            assert len(looks_page.get_folder_name_in_form(data)) == 32, 'name of the folder is more than 32 symbols'
+            assert len(looks_page.get_folder_name_in_form()) == 32, 'name of the folder is more than 32 symbols'
 
-class TestFoldersRegressionUserIDLength:
+class TestFoldersCreationRegressionUserIDLength:
     def test_folder_created_user_id_0_symbols(self, driver):
             # Pre-condition: Login
             data = folder_random_data(10, DT.TYPES['cyrillic'] + DT.TYPES['latin'], 0, DT.TYPES['latin'])
@@ -217,7 +217,7 @@ class TestFoldersRegressionUserIDLength:
             assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
             looks_page.new_folder_button()
             looks_page.fill_folder_fields(data)
-            assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+            assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
             looks_page.save_folder_button()
 
             # Delete cookies and login again for checking
@@ -243,7 +243,7 @@ class TestFoldersRegressionUserIDLength:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -269,7 +269,7 @@ class TestFoldersRegressionUserIDLength:
                     assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                     looks_page.new_folder_button()
                     looks_page.fill_folder_fields(data)
-                    assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                    assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                     looks_page.save_folder_button()
 
                     # Delete cookies and login again for checking
@@ -295,7 +295,7 @@ class TestFoldersRegressionUserIDLength:
                     assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                     looks_page.new_folder_button()
                     looks_page.fill_folder_fields(data)
-                    assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                    assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                     looks_page.save_folder_button()
 
                     # Delete cookies and login again for checking
@@ -321,7 +321,7 @@ class TestFoldersRegressionUserIDLength:
                     assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                     looks_page.new_folder_button()
                     looks_page.fill_folder_fields(data)
-                    assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                    assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                     looks_page.save_folder_button()
 
                     # Delete cookies and login again for checking
@@ -347,9 +347,10 @@ class TestFoldersRegressionUserIDLength:
                     assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                     looks_page.new_folder_button()
                     looks_page.fill_folder_fields(data)
-                    assert len(looks_page.get_folder_user_id_in_form(data)) == 32, 'user_id of the folder is more than 32 symbols'
+                    assert len(
+                        looks_page.get_folder_user_id_in_form()) == 32, 'user_id of the folder is more than 32 symbols'
 
-class TestFoldersRegressionNameUserIDSymbols:
+class TestFoldersCreationRegressionNameUserIDSymbols:
     def test_folder_created_name_latin_user_id_latin(self, driver):
                 # Pre-condition: Login
                 data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
@@ -362,7 +363,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -388,7 +390,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -414,7 +417,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -440,7 +444,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -466,7 +471,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -492,7 +498,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -518,7 +525,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -544,7 +552,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -570,7 +579,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -596,7 +606,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -622,7 +633,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -648,7 +660,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -674,7 +687,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -700,7 +714,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -726,7 +741,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -752,7 +768,8 @@ class TestFoldersRegressionNameUserIDSymbols:
                 assert looks_page.if_folder_exists(data, driver) == False, 'the folder with this name already exists, please delete the folder'
                 looks_page.new_folder_button()
                 looks_page.fill_folder_fields(data)
-                assert looks_page.get_folder_user_id_in_form(data) == data['user_id'], 'user_id of the folder is different'
+                assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+                assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
                 looks_page.save_folder_button()
 
                 # Delete cookies and login again for checking
@@ -766,3 +783,221 @@ class TestFoldersRegressionNameUserIDSymbols:
                 # Post-condition: Delete folder
                 looks_page.delete_folder(data, driver)
 
+class TestFoldersEditionSmoke:
+    # @pytest.mark.parametrize('exec_number', range(5))
+    def test_edit_folder_smoke(self, driver):
+        # Pre-condition: Login, Create folder
+        data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+        replace_data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+        login_page = LoginPage(driver, url)
+        login_page.open()
+        login_page.submit_login(email, password)
+        looks_page = LooksPage(driver, url)
+        assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
+        looks_page.new_folder_button()
+        looks_page.fill_folder_fields(data)
+        assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+        assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
+        looks_page.save_folder_button()
+
+        # Delete cookies and login again for checking
+        driver.delete_all_cookies()
+        login_page.open()
+        login_page.submit_login(email, password)
+
+        # Edit folder
+        looks_page.clear_folder_form(data, driver)
+        looks_page.fill_folder_fields(replace_data)
+        looks_page.save_folder_button()
+
+        # Delete cookies and login again for checking
+        driver.delete_all_cookies()
+        login_page.open()
+        login_page.submit_login(email, password)
+
+        # Checking edited folder
+        assert looks_page.if_folder_exists(replace_data, driver), 'the folder is not changed!'
+
+        # Post-condition: Delete folder
+        looks_page.delete_folder(replace_data, driver)
+
+class TestFoldersEditionRegressionNameLength:
+    def test_folder_edition_name_1_symbol(self, driver):
+        # Pre-condition: Login, Create folder
+        data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+        replace_data = folder_random_data(1, DT.TYPES['latin'], 0, DT.TYPES['latin'])
+        login_page = LoginPage(driver, url)
+        login_page.open()
+        login_page.submit_login(email, password)
+        looks_page = LooksPage(driver, url)
+        assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
+        looks_page.new_folder_button()
+        looks_page.fill_folder_fields(data)
+        assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+        assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
+        looks_page.save_folder_button()
+
+        # Delete cookies and login again for checking
+        driver.delete_all_cookies()
+        login_page.open()
+        login_page.submit_login(email, password)
+
+        # Edit folder
+        looks_page.clear_folder_form(data, driver)
+        looks_page.fill_folder_fields(replace_data)
+        looks_page.save_folder_button()
+
+        # Delete cookies and login again for checking
+        driver.delete_all_cookies()
+        login_page.open()
+        login_page.submit_login(email, password)
+
+        # Checking edited folder
+        assert looks_page.if_folder_exists(replace_data, driver), 'the folder is not changed!'
+
+        # Post-condition: Delete folder
+        looks_page.delete_folder(replace_data, driver)
+
+    def test_folder_edition_name_2_symbols(self, driver):
+            # Pre-condition: Login, Create folder
+            data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+            replace_data = folder_random_data(2, DT.TYPES['latin'], 0, DT.TYPES['latin'])
+            login_page = LoginPage(driver, url)
+            login_page.open()
+            login_page.submit_login(email, password)
+            looks_page = LooksPage(driver, url)
+            assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
+            looks_page.new_folder_button()
+            looks_page.fill_folder_fields(data)
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Edit folder
+            looks_page.clear_folder_form(data, driver)
+            looks_page.fill_folder_fields(replace_data)
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Checking edited folder
+            assert looks_page.if_folder_exists(replace_data, driver), 'the folder is not changed!'
+
+            # Post-condition: Delete folder
+            looks_page.delete_folder(replace_data, driver)
+
+    def test_folder_edition_name_10_symbols(self, driver):
+            # Pre-condition: Login, Create folder
+            data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+            replace_data = folder_random_data(10, DT.TYPES['latin'], 0, DT.TYPES['latin'])
+            login_page = LoginPage(driver, url)
+            login_page.open()
+            login_page.submit_login(email, password)
+            looks_page = LooksPage(driver, url)
+            assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
+            looks_page.new_folder_button()
+            looks_page.fill_folder_fields(data)
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Edit folder
+            looks_page.clear_folder_form(data, driver)
+            looks_page.fill_folder_fields(replace_data)
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Checking edited folder
+            assert looks_page.if_folder_exists(replace_data, driver), 'the folder is not changed!'
+
+            # Post-condition: Delete folder
+            looks_page.delete_folder(replace_data, driver)
+
+    def test_folder_edition_name_31_symbols(self, driver):
+            # Pre-condition: Login, Create folder
+            data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+            replace_data = folder_random_data(31, DT.TYPES['latin'], 0, DT.TYPES['latin'])
+            login_page = LoginPage(driver, url)
+            login_page.open()
+            login_page.submit_login(email, password)
+            looks_page = LooksPage(driver, url)
+            assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
+            looks_page.new_folder_button()
+            looks_page.fill_folder_fields(data)
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Edit folder
+            looks_page.clear_folder_form(data, driver)
+            looks_page.fill_folder_fields(replace_data)
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Checking edited folder
+            assert looks_page.if_folder_exists(replace_data, driver), 'the folder is not changed!'
+
+            # Post-condition: Delete folder
+            looks_page.delete_folder(replace_data, driver)
+
+    def test_folder_edition_name_32_symbols(self, driver):
+            # Pre-condition: Login, Create folder
+            data = folder_random_data(10, DT.TYPES['latin'], 10, DT.TYPES['latin'])
+            replace_data = folder_random_data(32, DT.TYPES['latin'], 0, DT.TYPES['latin'])
+            login_page = LoginPage(driver, url)
+            login_page.open()
+            login_page.submit_login(email, password)
+            looks_page = LooksPage(driver, url)
+            assert looks_page.if_folder_exists(data, driver) == False, 'the folder already exists, please delete the folder'
+            looks_page.new_folder_button()
+            looks_page.fill_folder_fields(data)
+            assert looks_page.get_folder_name_in_form() == data['name'], 'name of the folder is different'
+            assert looks_page.get_folder_user_id_in_form() == data['user_id'], 'user_id of the folder is different'
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Edit folder
+            looks_page.clear_folder_form(data, driver)
+            looks_page.fill_folder_fields(replace_data)
+            looks_page.save_folder_button()
+
+            # Delete cookies and login again for checking
+            driver.delete_all_cookies()
+            login_page.open()
+            login_page.submit_login(email, password)
+
+            # Checking edited folder
+            assert looks_page.if_folder_exists(replace_data, driver), 'the folder is not changed!'
+
+            # Post-condition: Delete folder
+            looks_page.delete_folder(replace_data, driver)

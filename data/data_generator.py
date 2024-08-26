@@ -6,22 +6,22 @@ from data.data_types import DataTypes as D
 # string_length - длина строки
 # data_type - тип данных из словаря TYPES класса DataTypes
 def get_random_string(string_length, data_type: string):
-    return ''.join([r.choice(data_type) for j in range(string_length)])
+    return ''.join([r.choice(data_type) for _ in range(string_length)])
 
 # Функция get_random_list возвращает рандомный список из списков с данными в соответствии с:
 # field - поле, список для которого требуется получить
 def get_random_list(field):
     if field == 'gender':
-        random_length = r.randint(1, len(D.GENDERS))
+        random_length = r.randint(1, 1)
         return r.sample(D.GENDERS,random_length)
     elif field == 'top_size':
-        random_length = r.randint(2, 7)
+        random_length = r.randint(1, 2)
         return r.sample(D.TOP_SIZE, random_length)
     elif field == 'bottom_size':
-        random_length = r.randint(2, 7)
+        random_length = r.randint(1, 2)
         return r.sample(D.BOTTOM_SIZE, random_length)
     elif field == 'shoes_size':
-        random_length = r.randint(2, 7)
+        random_length = r.randint(1, 2)
         return r.sample(D.SHOES_SIZE, random_length)
     elif field == 'brands':
         random_length = r.randint(1, 1)

@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 
 class FoldersLocators:
-    folder_name = ''
     ADD_FOLDER_BUTTON = (By.XPATH, '//*[@id="button-add-folder"]')
     FOLDER_NAME_FIELD = (By.XPATH, '//*[@id="folder-name"]')
     USER_ID_FIELD = (By.XPATH, '//*[@id="user-id"]')
