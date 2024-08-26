@@ -44,7 +44,7 @@ class LooksPage(BasePage):
         actions.move_to_element(self.element_is_visible(folder_hover_locator))
         actions.click(self.presence_of_element_located(trash_button_locator))
         actions.perform()
-        self.element_to_be_clickable(delete_confirmation_locator)
+        self.element_to_be_clickable(delete_confirmation_locator).click()
 
     def if_folder_exists(self, data, driver):
         return len(driver.find_elements(By.XPATH, '//span[text()="' + data['name'] + '"]/ancestor::a')) > 0

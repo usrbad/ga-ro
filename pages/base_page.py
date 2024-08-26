@@ -19,5 +19,5 @@ class BasePage:
     def presence_of_element_located(self, locator, timeout=5):
         return Wait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
-    def text_to_be_present_in_element(self, locator, timeout=5, attribute='value'):
-        return Wait(self.driver, timeout).until(EC.text_to_be_present_in_element_attribute(locator, attribute))
+    def invisibility_of_element(self, locator, timeout=5, attribute='value'):
+        return Wait(self.driver, timeout).until(EC.invisibility_of_element(locator))

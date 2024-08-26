@@ -4,8 +4,8 @@ class DataTypes:
     TYPES = {
         'latin': string.ascii_letters + ' ',
         'cyrillic': 'АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя' + ' ',
-        'spec': string.punctuation,
-        'digit': string.digits
+        'spec': '!@#$%^&*()[]{};:<>?/',
+        'digits': string.digits
     }
     GENDERS = [
         'Female',
