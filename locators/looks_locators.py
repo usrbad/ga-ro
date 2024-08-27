@@ -15,3 +15,5 @@ class FoldersLocators:
     CANCEL_BUTTON = (By.XPATH, '//*[@id="btn-cancel-new-folder"]')
     CLOSE_POPUP_BUTTON = (By.XPATH, '//*[@id="close-icon"]')
     DELETE_CONFIRMATION_BUTTON = (By.XPATH, '//*[@id="btn-delete-folder"]')
+    DELETE_CANCEL_BUTTON = (By.XPATH, '//*[@id="btn-delete-cancel"]')
+    DELETE_FOLDER_POPUP = (By.XPATH, '//*[@id="popup-delete-folder"]')
