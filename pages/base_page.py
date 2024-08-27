@@ -19,5 +19,5 @@ class BasePage:
     def presence_of_element_located(self, locator, timeout=5):
         return Wait(self.driver, timeout).until(EC.presence_of_element_located(locator))
 
-    def invisibility_of_element(self, locator, timeout=5, attribute='value'):
+    def invisibility_of_element(self, locator, timeout=5):
         return Wait(self.driver, timeout).until(EC.invisibility_of_element(locator))

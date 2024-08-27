@@ -10,6 +10,9 @@ class LooksPage(BasePage):
     def new_folder_button(self):
         self.element_is_visible(Locators.ADD_FOLDER_BUTTON).click()
 
+    def fill_only_name(self, data):
+        self.element_is_visible(Locators.FOLDER_NAME_FIELD).send_keys(data['name'])
+
     def fill_folder_fields(self, data):
         self.element_is_visible(Locators.FOLDER_NAME_FIELD).send_keys(data['name'])
         self.element_is_visible(Locators.USER_ID_FIELD).send_keys(data['user_id'])
@@ -86,6 +89,15 @@ class LooksPage(BasePage):
 
     def get_folder_user_id_in_form(self):
         return self.element_is_visible(Locators.USER_ID_FIELD).get_attribute('value')
+
+    def cancel_folder_creation_button(self):
+        return self.element_to_be_clickable(Locators.CANCEL_BUTTON).click()
+
+    def is_popup_new_folder_visible(self):
+        return self.element_is_visible(Locators.POPUP_FOLDER_FORM)
+
+    def close_button_folder_creation(self):
+        return self.element_is_visible(Locators.CLOSE_POPUP_BUTTON).click()
 
     # def is_folder_fields_equals(self, data):
     #     user_id = self.element_is_visible((By.XPATH, '//span[text()="' + data['name'] + '"]/ancestor::a')).get_attribute('data-user-id')
